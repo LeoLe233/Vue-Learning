@@ -1,31 +1,26 @@
 <script setup>
-// JS part
 import { ref } from 'vue'
+import ScheduleHeader from './components/ScheduleHeader.vue'
+import ScheduleGrid from './components/ScheduleGrid.vue'
 
-const blog = ref({
-  //Defines an object with properties
-  name: 'Leo',
-  info: 'Executive chef of LionLink',
-  link: '/who-is-leo',
-})
+const currentSport = ref('Tennis')
 
-console.log(blog.)
+const handleSportChange = (sport) => {
+  currentSport.value = sport
+}
 </script>
 
 <template>
-  <!-- HTML part -->
-  <div>
-    <header>
-      <h1>
-        <a :href="blog.link"> {{ blog.name }}</a>
-      </h1>
-      <article>
-        {{ blog.info }}
-      </article>
-    </header>
+  <div class="app">
+    <ScheduleHeader @sport-change="handleSportChange" />
+    <ScheduleGrid :sport="currentSport" />
   </div>
 </template>
 
-<style scoped>
-/* CSS part*/
+<style>
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
 </style>
